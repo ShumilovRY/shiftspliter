@@ -38,8 +38,7 @@ public class SplitFile {
         }
         else return "";
     }
-
-   /* @Override
+    /* @Override
     public String toString() {
         return name + suffix + ext;
     }*/
