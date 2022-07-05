@@ -1,6 +1,7 @@
 package utills;
 
 import model.Directory;
+import model.SplitFile;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -11,13 +12,22 @@ import java.util.List;
 
 public class UnSplitUtil {
 
-    public static void unSplitter(final String dir, final List<String> files, final String ext) throws IOException {
+    public static void unSplitter(final String dir, final List<SplitFile> files, final String ext) throws IOException {
         String outFile = dir + "siebel" + ext;
         try (RandomAccessFile sourceFile = new RandomAccessFile(outFile, "rw");
              FileChannel sourceChannel = sourceFile.getChannel()) {
+            files.forEach(s-> {
+                try {
+                    writeFromPart(sourceChannel,s.getName());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+/*
             for (String e : files) {
                 writeFromPart(sourceChannel, e);
             }
+*/
         }
     }
     private static void writeFromPart(FileChannel sourceChannel, String name) throws IOException {

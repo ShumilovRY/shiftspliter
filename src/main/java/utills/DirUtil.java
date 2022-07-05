@@ -35,5 +35,9 @@ public class DirUtil {
                     .collect(Collectors.toList());
         }
     }
-
+    public static List<SplitFile> listUnSplit (String nameFile, List<SplitFile> collectionSplitFiles)  {
+        return collectionSplitFiles.stream()
+                .filter(s->s.getName().equals(nameFile))
+                .collect(Collectors.toList());
+    }
 }
