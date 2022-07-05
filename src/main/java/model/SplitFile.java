@@ -5,27 +5,13 @@ import java.util.Objects;
 public class SplitFile {
     private String name;
     private String suffix;
-   // private int count=0;
     private String ext;
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setExt(String ext) {
-        this.ext = ext;
-    }
-
     public String getName() {
         return name;
     }
 
     public String getExt() {
         return ext;
-    }
-
-    public void setSuffix(String suffix) {
-        this.suffix = suffix;
     }
 
     public String getSuffix() {
@@ -38,19 +24,9 @@ public class SplitFile {
         }
         else return "";
     }
-    /* @Override
+     @Override
     public String toString() {
         return name + suffix + ext;
-    }*/
-
-    @Override
-    public String toString() {
-        return "SplitFile{" +
-                "name='" + name + '\'' +
-                ", suffix='" + suffix + '\'' +
-                ", ext='" + ext + '\'' +
-               // ", count'" + count + '\'' +
-                '}';
     }
 
     @Override
@@ -81,17 +57,8 @@ public class SplitFile {
             this.ext = file.substring(posE);
         }
         else {
-            //int lenS = "_part_".length();
             this.name = file.substring(0, posS);
             this.suffix = file.substring(posS,posE);
-           /* if (suffix.contains("Complete")){
-                this.count = 0;
-            }
-            else {
-                int posC = posS + lenS;
-                String check = suffix.substring(posC, posE);
-                this.count = Integer.parseInt(check)+1;
-            }*/
             this.ext = file.substring(posE);
         }
     }

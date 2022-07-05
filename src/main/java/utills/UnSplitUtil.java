@@ -12,26 +12,22 @@ import java.util.List;
 
 public class UnSplitUtil {
 
-    public static void unSplitter(final String dir, final List<SplitFile> files, final String ext) throws IOException {
-        String outFile = dir + "siebel" + ext;
+    public static void unSplitter(final String name, final String ext, final List<SplitFile> files) throws IOException {
+        String outFile = Directory.DIRUNSPLIT  + name + ext;
         try (RandomAccessFile sourceFile = new RandomAccessFile(outFile, "rw");
              FileChannel sourceChannel = sourceFile.getChannel()) {
             files.forEach(s-> {
                 try {
-                    writeFromPart(sourceChannel,s.getName());
+                    writeFromPart(sourceChannel,s.getName(),s.getSuffix(), s.getExt());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
-/*
-            for (String e : files) {
-                writeFromPart(sourceChannel, e);
-            }
-*/
         }
     }
-    private static void writeFromPart(FileChannel sourceChannel, String name) throws IOException {
-        Path fileName = Paths.get(Directory.DIRUNSPLIT + name);
+
+    private static void writeFromPart(FileChannel sourceChannel, String name, String suffix, String ext) throws IOException {
+        Path fileName = Paths.get(Directory.DIRSPLIT + name + suffix + ext);
         try (RandomAccessFile inFile = new RandomAccessFile(fileName.toFile(), "r");
              FileChannel toChannel = inFile.getChannel()) {
             for (long p = 0, l = toChannel.size(); p < 1; )

@@ -1,7 +1,5 @@
 package utills;
 
-import model.Directory;
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
@@ -11,7 +9,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import static model.Directory.*;
+import static model.Directory.DIRSPLIT;
+import static model.Directory.SUFFIX;
 
 public class SplitUtil {
 

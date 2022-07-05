@@ -31,7 +31,7 @@ public class ShiftSplitter {
                 .collect(Collectors.toList());
         result.forEach(s-> {
             try {
-                UnSplitUtil.unSplitter(s.getName(),DirUtil.listUnSplit(s.getName(), splitFiles), s.getExt());
+                UnSplitUtil.unSplitter(s.getName(), s.getExt(), DirUtil.listUnSplit(s.getName(), splitFiles));
             } catch (IOException e) {
                 e.printStackTrace();
             }
