@@ -20,8 +20,6 @@ public class DirUtil {
                     .map(Path::getFileName)
                     .map(path -> new SplitFile(path.toString()))
                     .collect(Collectors.toList());
-                    /*.map(Path::toString)
-                    .collect(Collectors.toMap(s -> s.substring(0, s.lastIndexOf('.')), s -> s.substring(s.lastIndexOf('.'))));*/
         }
     }
 

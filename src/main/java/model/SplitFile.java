@@ -6,6 +6,7 @@ public class SplitFile {
     private String name;
     private String suffix;
     private String ext;
+
     public String getName() {
         return name;
     }
